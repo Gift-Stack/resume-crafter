@@ -1,0 +1,2 @@
+*{margin:0;padding:0;box-sizing:border-box}body{overflow-x:hidden}.info{display:flex;justify-content:space-around}i{color:#b29700}.grid{display:grid;grid-template-areas:"left right right right right right";text-align:center}.grid-1{grid-area:left;background-color:#eee;height:100vh;padding:15px 20px}.grid-2{grid-area:right}img{border-radius:50%;width:150px}hr{padding-bottom:1rem}
+/*# sourceMappingURL=main.15d43602.chunk.css.map */

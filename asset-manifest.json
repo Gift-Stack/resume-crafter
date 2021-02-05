@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/resume-crafter/static/css/main.15d43602.chunk.css",
+    "main.js": "/resume-crafter/static/js/main.50907146.chunk.js",
+    "main.js.map": "/resume-crafter/static/js/main.50907146.chunk.js.map",
+    "runtime-main.js": "/resume-crafter/static/js/runtime-main.18445f46.js",
+    "runtime-main.js.map": "/resume-crafter/static/js/runtime-main.18445f46.js.map",
+    "static/js/2.587102b0.chunk.js": "/resume-crafter/static/js/2.587102b0.chunk.js",
+    "static/js/2.587102b0.chunk.js.map": "/resume-crafter/static/js/2.587102b0.chunk.js.map",
+    "static/js/3.dd704087.chunk.js": "/resume-crafter/static/js/3.dd704087.chunk.js",
+    "static/js/3.dd704087.chunk.js.map": "/resume-crafter/static/js/3.dd704087.chunk.js.map",
+    "index.html": "/resume-crafter/index.html",
+    "static/css/main.15d43602.chunk.css.map": "/resume-crafter/static/css/main.15d43602.chunk.css.map",
+    "static/js/2.587102b0.chunk.js.LICENSE.txt": "/resume-crafter/static/js/2.587102b0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.18445f46.js",
+    "static/js/2.587102b0.chunk.js",
+    "static/css/main.15d43602.chunk.css",
+    "static/js/main.50907146.chunk.js"
+  ]
+}
