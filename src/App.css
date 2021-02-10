@@ -6,31 +6,51 @@
 body {
   overflow-x: hidden;
 }
+input {
+  border-width: 2px 1.4px 1.4px 1.4px !important;
+}
+.display {
+  position: absolute;
+  width: 795px;
+}
 .info {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }
 i {
   color: #b29700;
 }
 .grid {
-  display: grid;
+  display: flex;
   grid-template-areas: 'left right right right right right';
   text-align: center;
+  min-height: 85vh;
 }
 .grid-1 {
   grid-area: left;
   background-color: #eee;
-  height: 100vh;
-  padding: 15px 20px;
+  width: 33%;
 }
 .grid-2 {
   grid-area: right;
+  width: 77%;
 }
 img {
   border-radius: 50%;
   width: 150px;
 }
 hr {
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
+/* 
+.row {
+  flex-wrap: nowrap !important;
+}
+
+.col-md-4 {
+  -ms-flex: 0 0 33.333333% !important;
+  flex: 0 0 33.333333% !important;
+  width: 33.333333% !important;
+} */
