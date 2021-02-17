@@ -1,25 +1,32 @@
 import React from 'react';
+import { View, Text, Link, Stylesheet } from '@react-pdf/renderer';
 
 const NavBar = ({ name, stack, address, phone, email }) => {
   return (
-    <div style={navBarStyles}>
-      <h2 className='text-uppercase'> {name} </h2>
-      <p style={{ fontWeight: 'bold', color: '#b29700' }}>-- {stack} --</p>
-      <div className=' row '>
-        <div className='col-md-4'>
-          <i className='fas fa-map-marker-alt'></i>
-          <p>{address}</p>
-        </div>
-        <div className='col-md-4'>
-          <i className='fas fa-phone-alt'></i>
-          <p>{phone}</p>
-        </div>
-        <div className='col-md-4'>
-          <i className='fas fa-envelope'></i>
-          <p>{email}</p>
-        </div>
-      </div>
-    </div>
+    <View style={navBarStyles}>
+      <Text className='text-uppercase'> {name} </Text>
+      <Text style={{ fontWeight: 'bold', color: '#b29700' }}>
+        -- {stack} --
+      </Text>
+      <View className=' row '>
+        <View className='col-md-4'>
+          {/* <i className='fas fa-map-marker-alt'></i> */}
+          <Text>{address}</Text>
+        </View>
+        <View className='col-md-4'>
+          {/* <i className='fas fa-phone-alt'></i> */}
+          <Text>{phone}</Text>
+        </View>
+        <View className='col-md-4'>
+          {/* <i className='fas fa-envelope'></i> */}
+          <Text>
+            <Link src={`mailto:${email}`} style={{ color: 'white' }}>
+              {email}
+            </Link>
+          </Text>
+        </View>
+      </View>
+    </View>
   );
 };
 

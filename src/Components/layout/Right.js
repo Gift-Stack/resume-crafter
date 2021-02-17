@@ -1,34 +1,34 @@
 import React from 'react';
+import { View, Text, Link, Stylesheet } from '@react-pdf/renderer';
 
 export const Right = ({ experience, skills }) => {
-  console.log('experience', experience);
   return (
-    <div className='container pl-4'>
-      <h3 className='text-left  pt-4'>Work Experience</h3>
-      <br />
-      <div>
+    <View className='container pl-4'>
+      <Text className='h3 text-left  pt-4'>Work Experience</Text>
+      <View style={{ height: 20 }} />
+      <View>
         {experience.map((exp) => (
-          <div key={Math.random() * 1000000} className='text-left pb-3'>
-            <h5>
-              <span style={{ color: '#b29700' }}>{exp.title}</span> at{' '}
+          <View key={Math.random() * 1000000} className='text-left pb-3'>
+            <Text className='h5'>
+              <Text style={{ color: '#b29700' }}>{exp.title}</Text> at{' '}
               {exp.employer} ({exp.experienceStartDate} till{' '}
               {exp.experienceEndDate})
-            </h5>
-            <p>{exp.jobDescription}</p>
-          </div>
+            </Text>
+            <Text className='p'>{exp.jobDescription}</Text>
+          </View>
         ))}
 
-        <h3 className='text-left pt-4'>Skills</h3>
-        <br />
-        <div className='text-left'>
+        <Text className=' h3 text-left pt-4'>Skills</Text>
+        <View style={{ height: 20 }} />
+        <View className='text-left'>
           {skills.map((skill) => (
-            <h6 className='card p-3' key={Math.random() * 1000000}>
+            <Text className=' h6 card p-3' key={Math.random() * 1000000}>
               {' '}
               {skill}{' '}
-            </h6>
+            </Text>
           ))}
-        </div>
-      </div>
-    </div>
+        </View>
+      </View>
+    </View>
   );
 };

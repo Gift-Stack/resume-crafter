@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* font-family: Gilroy, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 body {
   overflow-x: hidden;
@@ -9,10 +12,10 @@ body {
 input {
   border-width: 2px 1.4px 1.4px 1.4px !important;
 }
-.display {
+/* .display {
   position: absolute;
   width: 795px;
-}
+} */
 .info {
   display: flex;
   justify-content: space-between;

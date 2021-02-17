@@ -13,9 +13,15 @@ import 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 
-import Pdf from 'react-to-pdf';
-
-const ref = createRef();
+// import Pdf from 'react-to-pdf';
+import {
+  Page,
+  View,
+  Document,
+  PDFDownloadLink,
+  PDFViewer,
+} from '@react-pdf/renderer';
+// const ref = createRef();
 
 function App() {
   // General From States
@@ -122,7 +128,6 @@ function App() {
   const handleAddLink = () => {
     setShowLink([...showLink, link]);
     setLink('');
-    console.log('link', link);
   };
 
   return (
@@ -504,32 +509,49 @@ function App() {
           path='/resume'
           render={() => (
             <>
-              <Pdf targetRef={ref} filename='resume.pdf'>
+              <PDFDownloadLink fileName='resume.pdf'>
+                {({ blob, url, loading, error }) =>
+                  loading ? 'Loading document...' : 'Download now'
+                }
+              </PDFDownloadLink>
+              {/* <Pdf targ qasxcetRef={ref} filename='resume.pdf'>
                 {({ toPdf }) => (
                   <button onClick={toPdf}>Generate as Pdf</button>
                 )}
-              </Pdf>
-              <div ref={ref} className='display'>
-                <NavBar
-                  name={name}
-                  stack={stack}
-                  address={address}
-                  phone={phone}
-                  email={email}
-                />
-                <div className='grid'>
-                  <div className='grid-1'>
-                    <Left
-                      education={educations}
-                      languages={languages}
-                      links={showLink}
-                    />
-                  </div>
-                  <div className='grid-2'>
-                    <Right experience={experience} skills={skills} />
-                  </div>
-                </div>
-              </div>
+              </Pdf> */}
+              {/* <div ref={ref} className='display'> */}
+              <PDFViewer>
+                <Document>
+                  <Page size='A4'>
+                    <View>
+                      <NavBar
+                        name={name}
+                        stack={stack}
+                        address={address}
+                        phone={phone}
+                        email={email}
+                      />
+                    </View>
+                    <View className='grid'>
+                      <View className='grid-1'>
+                        <View>
+                          <Left
+                            education={educations}
+                            languages={languages}
+                            links={showLink}
+                          />
+                        </View>
+                      </View>
+                      <View className='grid-2'>
+                        <View>
+                          <Right experience={experience} skills={skills} />
+                        </View>
+                      </View>
+                    </View>
+                  </Page>
+                </Document>
+              </PDFViewer>
+              {/* </div> */}
             </>
           )}
         />
