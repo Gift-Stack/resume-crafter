@@ -8,12 +8,16 @@ export const Right = ({ experience, skills }) => {
       <View style={{ height: 20 }} />
       <View>
         {experience.map((exp) => (
+          // // console.log('exp', exp)
           <View key={Math.random() * 1000000} className='text-left pb-3'>
-            <Text className='h5'>
-              <Text style={{ color: '#b29700' }}>{exp.title}</Text> at{' '}
-              {exp.employer} ({exp.experienceStartDate} till{' '}
-              {exp.experienceEndDate})
-            </Text>
+            <View className='h5'>
+              <Text style={{ color: '#b29700' }}>{exp.title}</Text>
+              <Text>
+                {' '}
+                at {exp.employer} ({exp.experienceStartDate} till{' '}
+                {exp.experienceEndDate})
+              </Text>
+            </View>
             <Text className='p'>{exp.jobDescription}</Text>
           </View>
         ))}

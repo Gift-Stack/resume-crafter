@@ -3,7 +3,9 @@ import React from 'react';
 export const Education = ({ education }) => {
   const { course, degree, startDate, endDate } = education;
 
-  const handleDelete = () => {};
+  const handleDelete = (id) => {
+    console.log('id', id);
+  };
 
   return (
     <div className='my-2 card px-3 py-2 d-flex flex-row justify-content-between'>
@@ -15,7 +17,7 @@ export const Education = ({ education }) => {
           {startDate} - {endDate}
         </p>
       </div>
-      <span onClick={handleDelete}>
+      <span onClick={() => handleDelete(education.id)}>
         <svg
           stroke='currentColor'
           fill='currentColor'

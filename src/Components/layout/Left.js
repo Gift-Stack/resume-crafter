@@ -13,7 +13,7 @@ export const Left = ({ education, languages, links }) => {
             <Text className='h6' style={{ textTransform: 'uppercase' }}>
               {cur.degree}
             </Text>
-            <Text
+            <View
               className='p'
               style={{
                 color: '#b29700',
@@ -21,11 +21,11 @@ export const Left = ({ education, languages, links }) => {
                 fontStyle: 'italic',
               }}
             >
-              <View>{cur.course}</View>
-              <View>
+              <Text>{cur.course}</Text>
+              <Text>
                 ({cur.startDate} till {cur.endDate})
-              </View>
-            </Text>
+              </Text>
+            </View>
           </View>
         ))}
       </View>

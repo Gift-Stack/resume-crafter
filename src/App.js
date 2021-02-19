@@ -12,6 +12,7 @@ import { Experience } from './Components/Experience';
 import 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
+import { v4 as uuid } from 'uuid';
 
 // import Pdf from 'react-to-pdf';
 import {
@@ -57,6 +58,7 @@ function App() {
     setEducations([
       ...educations,
       {
+        id: uuid(),
         course,
         degree,
         startDate,
@@ -99,6 +101,7 @@ function App() {
     setExperience([
       ...experience,
       {
+        id: uuid(),
         title,
         employer,
         experienceStartDate,
@@ -196,10 +199,7 @@ function App() {
 
                         {educations &&
                           educations.map((edu) => (
-                            <Education
-                              key={Math.random() * 1000000000}
-                              education={edu}
-                            />
+                            <Education key={edu.id} education={edu} />
                           ))}
                         <Button
                           variant='none'
@@ -311,7 +311,10 @@ function App() {
                         <br />
                         {experience &&
                           experience.map((curExperience) => (
-                            <Experience experience={curExperience} />
+                            <Experience
+                              key={curExperience.id}
+                              experience={curExperience}
+                            />
                           ))}
                         <Button
                           variant='none'
