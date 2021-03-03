@@ -34,23 +34,23 @@ export const Left = ({ education, languages, links }) => {
       <View style={{ borderBottomWidth: 2 }} />
       {languages.map((language) => (
         <Text style={{ color: '#b29700', fontSize: 20, fontWeight: 'bold' }}>
-          - {language} -
+          - {language.language} -
         </Text>
       ))}
       <View style={{ height: 20 }} />
       <Text className='h4'>LINKS</Text>
       <View style={{ borderBottomWidth: 2 }} />
       {links.map((link) => (
-        <Text className='list-unstyled list'>
+        <View className='list-unstyled list'>
           <Link
             style={{ color: '#b29700' }}
-            src={`${link}`}
+            src={`${link.link}`}
             target='_blank'
             className='link '
           >
-            {link}
+            {link.link}
           </Link>
-        </Text>
+        </View>
       ))}
     </View>
   );

@@ -21,7 +21,9 @@ import {
   Document,
   PDFDownloadLink,
   PDFViewer,
+  StyleSheet,
 } from '@react-pdf/renderer';
+import Resume from './Components/Resume';
 // const ref = createRef();
 
 function App() {
@@ -75,13 +77,28 @@ function App() {
     setShowModal(false);
   };
 
+  // Handle delete education
+  const handleDeleteEducation = (id) => {
+    // const educationCopy = [...educations];
+    // educationCopy.filter((education) => education.id != id);
+    setEducations((prevEducation) => {
+      return prevEducation.filter((education) => education.id !== id);
+    });
+  };
+
   const handleAddLanguage = () => {
     if (language === '') {
       alert('E be like sey na ment');
     } else {
-      setLanguages([...languages, language]);
+      setLanguages([...languages, { id: uuid(), language }]);
       setLanguage('');
     }
+  };
+  // HandleLanguageDeletion
+  const HandleLanguageDelete = (id) => {
+    setLanguages((prevLanguages) =>
+      prevLanguages.filter((language) => language.id !== id)
+    );
   };
 
   // Experience Modal Classes
@@ -118,20 +135,34 @@ function App() {
     setJobDescription('');
     setShowExperienceModal(false);
   };
+  // HandleExperienceDeletion
+  const handleDeleteExperience = (id) => {
+    setExperience((prevExperience) => {
+      return prevExperience.filter((experience) => experience.id !== id);
+    });
+  };
 
   // Skills Handler
   const handleAddSkill = () => {
     if (skill === '') {
       alert('I fit deck you oh');
     } else {
-      setSkills([...skills, skill]);
+      setSkills([...skills, { id: uuid(), skill }]);
       setSkill('');
     }
   };
+  // HandleSkillDeletion
+  const handleDeleteSkill = (id) =>
+    setSkills((prevSkills) => prevSkills.filter((skill) => skill.id !== id));
+
+  // Link Handler
   const handleAddLink = () => {
-    setShowLink([...showLink, link]);
+    setShowLink([...showLink, { id: uuid(), link }]);
     setLink('');
   };
+  // HandleLinkDeletion
+  const handleDeleteLink = (id) =>
+    setShowLink((prevLinks) => prevLinks.filter((link) => link.id !== id));
 
   return (
     <Router>
@@ -148,7 +179,7 @@ function App() {
                 Build Your Resume in 5mins
               </h3>
 
-              <div className='container px-5'>
+              <div className='container px-3'>
                 <div
                   className='card my-5'
                   style={{
@@ -158,7 +189,7 @@ function App() {
                 >
                   <div className='card-body '>
                     <div className='container'>
-                      <form className='container my-3  form-group'>
+                      <form className='my-3  form-group'>
                         <input
                           type='text'
                           value={name}
@@ -199,7 +230,11 @@ function App() {
 
                         {educations &&
                           educations.map((edu) => (
-                            <Education key={edu.id} education={edu} />
+                            <Education
+                              key={edu.id}
+                              education={edu}
+                              handleDeleteEducation={handleDeleteEducation}
+                            />
                           ))}
                         <Button
                           variant='none'
@@ -277,17 +312,22 @@ function App() {
                         {languages &&
                           languages.map((language) => (
                             <div
+                              key={language.id}
                               className='card py-1 px-4 my-3  flex-row justify-content-between align-items-center'
                               style={{ display: 'inline-flex' }}
                             >
-                              {language}
+                              {language.language}
                               <span
                                 className='pl-3 '
                                 style={{
                                   fontSize: 23,
                                   color: '#003366',
                                   fontWeight: 'bold',
+                                  cursor: 'pointer',
                                 }}
+                                onClick={() =>
+                                  HandleLanguageDelete(language.id)
+                                }
                               >
                                 &times;
                               </span>
@@ -314,6 +354,7 @@ function App() {
                             <Experience
                               key={curExperience.id}
                               experience={curExperience}
+                              handleDeleteExperience={handleDeleteExperience}
                             />
                           ))}
                         <Button
@@ -416,9 +457,12 @@ function App() {
                         <br />
                         {skills &&
                           skills.sort().map((skill) => (
-                            <div className='card p-2 my-3 d-flex flex-row justify-content-between'>
-                              <div>{skill}</div>
-                              <div>
+                            <div
+                              key={skill.id}
+                              className='card p-2 my-3 d-flex flex-row justify-content-between'
+                            >
+                              <div>{skill.skill}</div>
+                              <div onClick={() => handleDeleteSkill(skill.id)}>
                                 <svg
                                   stroke='currentColor'
                                   fill='currentColor'
@@ -458,18 +502,20 @@ function App() {
                         {showLink &&
                           showLink.map((link) => (
                             <div
-                              key={1}
+                              key={link.id}
                               className='card p-2 mb-3 mr-3 flex-row justify-content-between align-items-center'
                               style={{ display: 'inline-flex' }}
                             >
-                              {link}
+                              {link.link}
                               <span
                                 className='pl-3 '
                                 style={{
                                   fontSize: 23,
                                   color: '#003366',
                                   fontWeight: 'bold',
+                                  cursor: 'pointer',
                                 }}
+                                onClick={() => handleDeleteLink(link.id)}
                               >
                                 &times;
                               </span>
@@ -512,49 +558,35 @@ function App() {
           path='/resume'
           render={() => (
             <>
-              <PDFDownloadLink fileName='resume.pdf'>
-                {({ blob, url, loading, error }) =>
-                  loading ? 'Loading document...' : 'Download now'
-                }
-              </PDFDownloadLink>
-              {/* <Pdf targ qasxcetRef={ref} filename='resume.pdf'>
-                {({ toPdf }) => (
-                  <button onClick={toPdf}>Generate as Pdf</button>
-                )}
-              </Pdf> */}
-              {/* <div ref={ref} className='display'> */}
-              <PDFViewer>
-                <Document>
-                  <Page size='A4'>
-                    <View>
-                      <NavBar
-                        name={name}
-                        stack={stack}
-                        address={address}
-                        phone={phone}
-                        email={email}
-                      />
-                    </View>
-                    <View className='grid'>
-                      <View className='grid-1'>
-                        <View>
-                          <Left
-                            education={educations}
-                            languages={languages}
-                            links={showLink}
-                          />
-                        </View>
-                      </View>
-                      <View className='grid-2'>
-                        <View>
-                          <Right experience={experience} skills={skills} />
-                        </View>
-                      </View>
-                    </View>
-                  </Page>
-                </Document>
-              </PDFViewer>
-              {/* </div> */}
+              <h2 className='text-muted px-3 mt-4'>Check it out...</h2>
+              <div
+                style={{
+                  // display: 'flex',
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
+                  position: 'absolute',
+                  top: 100,
+                  left: 10,
+                  right: 10,
+                  height: '70%',
+                  // width: '75%',
+                }}
+              >
+                <PDFViewer style={styles.PDFViewer}>
+                  <Resume
+                    name={name}
+                    stack={stack}
+                    address={address}
+                    phone={phone}
+                    email={email}
+                    educations={educations}
+                    languages={languages}
+                    showLink={showLink}
+                    experience={experience}
+                    skills={skills}
+                  />
+                </PDFViewer>
+              </div>
             </>
           )}
         />
@@ -562,5 +594,13 @@ function App() {
     </Router>
   );
 }
+
+const styles = StyleSheet.create({
+  PDFViewer: {
+    display: 'flex',
+    height: '100%',
+    width: '100%',
+  },
+});
 
 export default App;

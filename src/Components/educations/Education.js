@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const Education = ({ education }) => {
+export const Education = ({ education, handleDeleteEducation }) => {
   const { course, degree, startDate, endDate } = education;
 
-  const handleDelete = (id) => {
-    console.log('id', id);
-  };
+  // const handleDelete = (id) => {
+  //   handleDeleteEducation(id);
+  // };
 
   return (
     <div className='my-2 card px-3 py-2 d-flex flex-row justify-content-between'>
@@ -17,7 +17,7 @@ export const Education = ({ education }) => {
           {startDate} - {endDate}
         </p>
       </div>
-      <span onClick={() => handleDelete(education.id)}>
+      <span onClick={() => handleDeleteEducation(education.id)}>
         <svg
           stroke='currentColor'
           fill='currentColor'
