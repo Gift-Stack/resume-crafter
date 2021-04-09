@@ -4,12 +4,19 @@ import { View, Text, Link, Stylesheet } from '@react-pdf/renderer';
 export const Right = ({ experience, skills }) => {
   return (
     <View className='container pl-4'>
-      <Text className='h3 text-left  pt-4'>Work Experience</Text>
+      <Text
+        className='h3 text-left  pt-4'
+        style={{
+          fontFamily: 'sans-serif',
+        }}
+      >
+        Work Experience
+      </Text>
       <View style={{ height: 20 }} />
 
       <View>
         {experience.map((exp) => (
-          <View key={Math.random() * 1000000} className='text-left pb-3'>
+          <View key={exp.id} className='text-left pb-3'>
             <View className='h5'>
               <Text style={{ color: '#b29700' }}>{exp.title}</Text>
               <Text>
@@ -25,7 +32,7 @@ export const Right = ({ experience, skills }) => {
         <View style={{ height: 20 }} />
         <View className='text-left'>
           {skills.map((skill) => (
-            <Text className=' h6 card p-3' key={Math.random() * 1000000}>
+            <Text className=' h6 card p-3' key={skill.id}>
               {' '}
               {skill.skill}{' '}
             </Text>

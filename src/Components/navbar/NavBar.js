@@ -20,7 +20,10 @@ const NavBar = ({ name, stack, address, phone, email }) => {
         <View className='col-md-4' style={styles.column}>
           {/* <i className='fas fa-envelope'></i> */}
           <Text>
-            <Link src={`mailto:${email}`} style={{ color: 'white' }}>
+            <Link
+              src={`mailto:${email}`}
+              style={{ color: 'white', textDecoration: 'none' }}
+            >
               {email}
             </Link>
           </Text>

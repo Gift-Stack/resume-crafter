@@ -1,11 +1,8 @@
 import './App.css';
-import { useState, createRef } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { Left } from './Components/layout/Left';
-import { Right } from './Components/layout/Right';
-import NavBar from './Components/navbar/NavBar';
 import { Education } from './Components/educations/Education';
 import { Experience } from './Components/Experience';
 
@@ -15,14 +12,7 @@ import { Button } from 'react-bootstrap';
 import { v4 as uuid } from 'uuid';
 
 // import Pdf from 'react-to-pdf';
-import {
-  Page,
-  View,
-  Document,
-  PDFDownloadLink,
-  PDFViewer,
-  StyleSheet,
-} from '@react-pdf/renderer';
+import { PDFDownloadLink, PDFViewer, StyleSheet } from '@react-pdf/renderer';
 import Resume from './Components/Resume';
 // const ref = createRef();
 
@@ -561,15 +551,11 @@ function App() {
               <h2 className='text-muted px-3 mt-4'>Check it out...</h2>
               <div
                 style={{
-                  // display: 'flex',
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
                   position: 'absolute',
                   top: 100,
                   left: 10,
                   right: 10,
                   height: '70%',
-                  // width: '75%',
                 }}
               >
                 <PDFViewer style={styles.PDFViewer}>
@@ -600,6 +586,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     height: '100%',
     width: '100%',
+    fontFamily:
+      "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
   },
 });
 
